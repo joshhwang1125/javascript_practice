@@ -33,3 +33,42 @@ var twoSum = function(array)
 
 console.log("==== Two Sum!");
 console.log(twoSum([1,2,4,-4,6,-2]));
+
+// var transpose = function(array){
+//   var results = [];
+//   for ( var rowidx = 0; rowidx<array[0].length; rowidx++)
+//   {
+//     for ( var colidx = 0; colidx<array.length; colidx++)
+//     {
+//       el = array[rowidx]
+//       if ( rowidx === 0)
+//       {
+//         var results[rowidx] = [ array[rowidx][colidx] ];
+//       }
+//       else
+//       {
+//         results[rowidx].push(array[rowidx][colidx]);
+//       }
+//     }
+//   }
+// };
+
+
+var transpose = function(array){
+  var results = [];
+  for ( var rowidx = 0; rowidx<array[0].length; rowidx++)
+  {
+    var row = [];
+    for ( var colidx = 0; colidx<array.length; colidx++)
+    {
+      var el = array[colidx][rowidx];
+      console.log(el);
+      row.push(el);
+    }
+    results.push(row);
+  }
+  return results;
+};
+
+console.log("==== Transpose!");
+console.log(transpose([[1,2,3],[4,5,6],[7,8,9]]));
