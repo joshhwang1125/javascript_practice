@@ -275,3 +275,95 @@ var binarySearch = function( array, needle )
 
 console.log( "==== binary search!!");
 console.log( binarySearch([1,2,3,4,5,6,7,8,9,10],2) );
+
+var mergeSort = function(array)
+{
+  if (array.length < 2)
+  {
+    return array;
+  }
+  else
+  {
+    var midpoint = Math.floor(array.length / 2);
+    var left = array.slice( 0, midpoint );
+    var right = array.slice(midpoint);
+    return merge(mergeSort(left), mergeSort(right));
+  }
+
+};
+
+var merge = function(left, right)
+{
+  var merged = [];
+
+  while (left.length > 0 && right.length > 0)
+  {
+    if (left[0] >= right[0])
+    {
+      merged.push(right.shift());
+    }
+    else {
+      merged.push(left.shift());
+    }
+  }
+  return merged.concat(left.concat(right));
+};
+
+var a = [1, 3, 5, 7, 9];
+var b = [2, 2, 2, 5, 100];
+console.log("==== merge sort!");
+console.log(mergeSort([2, 4, 1, 7, 4, 2, 88, 12, 3]));
+
+var subSets = function( array )
+{
+  if (array.length === 0 )
+  {
+    return [[]];
+  }
+  else
+  {
+    var init = subSets( array.slice(0,array.length - 1) );
+    var last = array[array.length - 1];
+    return init.concat( myMap( init,
+      function doubleMe(ary)
+      {
+        return ary.concat(last);
+      }
+    ) );
+  }
+};
+
+console.log("==== Subsets!");
+console.log( subSets([1, 2, 3]) );
+
+function Cat(name, owner) {
+  this.name = name;
+  this.owner = owner;
+}
+
+Cat.prototype.cuteStatement = function(){
+  console.log("everyone loves " + this.name);
+};
+
+Cat.prototype.meow = function(){
+  console.log("Hail Satan");
+};
+
+var cat1 = new Cat("The Meowfessor", "Billy Joel");
+var cat2 = new Cat("Meowhatma Gandhi", "Mike Tyson");
+var cat3 = new Cat("Chairman Meow", "Yeezy");
+var cat4 = new Cat("Meowchael", "Gabriel");
+
+cat2.meow = function(){
+  console.log("No! Violence is never the answer :(");
+};
+
+console.log(cat1.cuteStatement());
+console.log(cat2.cuteStatement());
+console.log(cat3.cuteStatement());
+console.log(cat4.cuteStatement());
+
+console.log(cat1.meow());
+console.log(cat2.meow());
+console.log(cat3.meow());
+console.log(cat4.meow());
